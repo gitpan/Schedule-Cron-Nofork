@@ -10,18 +10,18 @@ my $next_minute = "* * * * *";
 my @method = qw( new run load_crontab clean_timetable add_entry check_entry );
 
 BEGIN {
-  diag "Checking whether alarm() is supported";
+  # diag "Checking whether alarm() is supported";
 
   # Replace alarm() with our dummy version if it isn't supported natively (e.g. Win32)
   eval { alarm(0); };
   if ($@) {
-    diag "alarm() is not supported (installing harmless dummy).";
+    # diag "alarm() is not supported (installing harmless dummy).";
     eval q!
       use subs 'alarm';
       sub alarm { diag "Press CTRL-C if this test didn't stop after $_[0] seconds" if $_[0] };
     !;
   } else {
-    diag "alarm() is supported. Timeouts will be used.";
+    # diag "alarm() is supported. Timeouts will be used.";
   };
 };
 
@@ -33,8 +33,8 @@ can_ok($cron,@method);
 diag "Scheduling an entry for $next_minute, please stand by";
 $cron->add_entry($next_minute,sub { die "Cron job called" });
 eval {
-  $SIG{ALRM} = sub { die "Timeout reached" };  
-  alarm(90);  
+  $SIG{ALRM} = sub { die "Timeout reached" };
+  alarm(90);
   $cron->run();
 };
 alarm(0);

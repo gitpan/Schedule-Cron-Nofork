@@ -1,6 +1,7 @@
 Changes
 Makefile.PL
 MANIFEST
-Schedule/Cron/Nofork.pm
+lib/Schedule/Cron/Nofork.pm
 README
 t/01-api.t
+t/embedded-Schedule-Cron-Nofork.t
