@@ -1,4 +1,4 @@
-Schedule/Cron/Nofork version 0.01
+Schedule/Cron/Nofork version 0.02
 =================================
 
 This is a simple subclass of Schedule::Cron, that dosen't fork

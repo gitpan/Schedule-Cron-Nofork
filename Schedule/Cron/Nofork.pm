@@ -15,7 +15,7 @@ use vars qw($VERSION);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 sub execute {
   my $self = shift;
@@ -49,16 +49,16 @@ Schedule::Cron::Nofork - Nonforking cron module
 =head1 SYNOPSIS
 
   use Schedule::Cron::Nofork;
-  
+
   sub dispatcher {
     print "ID:   ",shift,"\n";
     print "Args: ","@_","\n";
   };
-  
+
   my $cron = new Schedule::Cron::Nofork(\&dispatcher);
   $cron->add_entry("0 11 * * Mon-Fri",\&check_links);
   $cron->run();
-  
+
 =head1 DESCRIPTION
 
 C<Schedule::Cron::Nofork> is a nonforking version of C<Schedule::Cron>,
